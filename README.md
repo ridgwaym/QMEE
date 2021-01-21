@@ -1,9 +1,9 @@
 # QMEE
 For use in QMEE
 
-My chosen data set details parasite communities in juvenile Chinook salmon, Coho salmon, and steelhead collected in Ocean Salmon Surveys. This data is part of an ongoing long-term survey of salmon of the west coast. This data is important for making correlations between ocean conditions and the distribution, abundance, and survival of juvenile Colombia River salmon in the Northern California Current nearshore ecosystem. Ocean indicators, such as parasite presense can provide managers from environmental agenies the ability to forcast adult returns in the future. 
+My chosen data set details the impact of anthropogenic noise on immunity in a model host-parasite system (guppy-Gyrodactylus turnbulli). Anthropogenic noise is a stressor experienced in every habitat, including aquatic systems. Noise pollution can lead to chronic stress in fishes, which can subsequently impact their hearing, behaviour and immunity. A metric used to characterize the immune function of a fish is to test susceptibility to parasitic infections, therefore this study experimentally exposed guppies to chronic or acute noise and observed their parasite resistance. 
 
-The data includes the date of collection, location of collection, the distance offshore, the depth of the station where the data was collected, the species observed, the age class, length and weight of the individual, and finally, parasite species, location, and count. The biological question that I am interested in answering is how do parasite impact the survival and abundance of salmon? 
+The data includes the fish ID, fish length, treatment/noise level the fish were exposed to, parasite count, the maximum parasite count, and the date the fish died. The biological question that I am interested in answering is how does a noise stressor  impact the immunity and lifespan of Guppies? 
 
-I am modifying this file in RStudio! 
+
 
