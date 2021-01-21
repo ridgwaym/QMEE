@@ -5,3 +5,5 @@ My chosen data set details parasite communities in juvenile Chinook salmon, Coho
 
 The data includes the date of collection, location of collection, the distance offshore, the depth of the station where the data was collected, the species observed, the age class, length and weight of the individual, and finally, parasite species, location, and count. The biological question that I am interested in answering is how do parasite impact the survival and abundance of salmon? 
 
+I am modifying this file in RStudio! 
+
