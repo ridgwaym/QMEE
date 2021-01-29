@@ -22,3 +22,20 @@ with(guppy,tapply(max.parasite.count, treatment, sd, na.rm=TRUE))
 #test for statistical difference of max parasite number between treatments
 guppy.aov <- aov(max.parasite.count ~ treatment, data=guppy)
 summary(guppy.aov)
+
+#New code for assignment 2
+library(tidyverse)
+
+(guppy
+  %>% group_by(treatment)
+  %>% summarise_at("max.parasite.count",
+                  list(mean=mean, sd=sd), na.rm=TRUE))
+
+#look for any inconsistencies in data
+summary(guppy)
+
+boxplot (max.parasite.count~treatment, data=guppy, 
+         xlab = "Treatment", ylab = "Maximum Parasite Count")
+
+plot(standard.length, max.parasite.count,
+     xlab="Maximum Parasite Count", ylab="Standard Length")
