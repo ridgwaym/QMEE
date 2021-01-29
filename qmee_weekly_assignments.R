@@ -37,5 +37,5 @@ summary(guppy)
 boxplot (max.parasite.count~treatment, data=guppy, 
          xlab = "Treatment", ylab = "Maximum Parasite Count")
 
-plot(standard.length, max.parasite.count,
-     xlab="Maximum Parasite Count", ylab="Standard Length")
+plot(max.parasite.count, standard.length,
+     ylab="Maximum Parasite Count", xlab="Standard Length")
