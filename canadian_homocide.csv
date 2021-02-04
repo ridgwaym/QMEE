@@ -1,0 +1,26 @@
+﻿"Number, rate and percentage changes in rates of homicide victims" 1 2 3 4
+"Annual"
+"Table: 35-10-0068-01 (formerly CANSIM 253-0001)"
+"Geography: Canada, Province or territory"
+
+"","Canada",,,,
+"Homicides","2015","2016","2017","2018","2019"
+"","Number",,,,
+"Number of homicide victims","610","616","667","658","678"
+"","Rate per 100,000 population",,,,
+"Homicide rates per 100,000 population","1.71","1.71","1.83","1.78","1.80"
+"","Percentage",,,,
+"Year-over-year percentage change in homicide rates","15.77","-0.15","6.99","-2.72","1.58"
+"Percentage change in homicide rates, 10-year comparison","-17.03","-8.61","0.55","-3.86","-0.73"
+
+Symbol legend:
+
+Footnotes:
+1,"Source: Statistics Canada, Homicide Survey, Canadian Centre for Justice Statistics."
+2,"Homicide includes Criminal Code offences of murder, manslaughter and infanticide."
+3,"Population counts are based on July 1st estimates from Statistics Canada, Demography Division."
+4,"The total count of a given year's number of homicides could include incidents that occurred in previous years. Homicides are allotted to the year in which they become known to or are deemed homicides by police, according to the report date submitted to Statistics Canada."
+
+"How to cite: Statistics Canada. Table 35-10-0068-01 Number, rate and percentage changes in rates of homicide victims"
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510006801
+DOI: https://doi.org/10.25318/3510006801-eng
