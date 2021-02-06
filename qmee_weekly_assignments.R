@@ -37,11 +37,11 @@ summary(guppy)
 boxplot (max.parasite.count~treatment, data=guppy, 
          xlab = "Treatment", ylab = "Maximum Parasite Count")
 
-
-plot.default(max.parasite.count, standard.length,
+## JD: I needed to add selectors to run this code
+plot.default(guppy$max.parasite.count, guppy$standard.length,
      ylab="Maximum Parasite Count", xlab="Standard Length")
 
-
+## A2 grade 1.9/3. Not exactly sure what you checked here or what you learned
 
 ##New code for assignment 3
 
