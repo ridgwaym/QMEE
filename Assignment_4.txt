@@ -10,4 +10,4 @@ To test this hypothesis statistically, I would calculate the total parasite load
 
 JD: We should talk about the ANOVA choice. If your main question is acute vs. chronic, maybe that should be your main test as well
 
-
+JD: This is very well done, but the MMV was very superficial. Grade: 1.8/3
