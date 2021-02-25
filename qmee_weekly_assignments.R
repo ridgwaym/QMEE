@@ -149,4 +149,6 @@ print(btot+geom_bar(stat = "identity", width = 0.5, fill="steelblue"))+
 
 
 
+##Permutations assignment
 
+#based on what I have plotted in the previous assignment
