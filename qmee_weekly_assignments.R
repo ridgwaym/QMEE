@@ -37,22 +37,23 @@ summary(guppy)
 boxplot (max.parasite.count~treatment, data=guppy, 
          xlab = "Treatment", ylab = "Maximum Parasite Count")
 
-
-plot.default(max.parasite.count, standard.length,
+## JD: I needed to add selectors to run this code
+plot.default(guppy$max.parasite.count, guppy$standard.length,
      ylab="Maximum Parasite Count", xlab="Standard Length")
 
-
-
+## A2 grade 1.9/3. Not exactly sure what you checked here or what you learned
 
 ##New code for assignment 3
 
 library(tidyverse)
 
+## BMB: you should generally comment out these interactive-only function ...
 view(guppy)
 
 library(dplyr)
 
 #pairing down columns to only the ones I need
+## BMB: good!
 pdat <- select(guppy, treatment, day, parasite.count)
 
 
@@ -64,6 +65,8 @@ timedat <- (pdat
 print(timedat)
 
 
+## BMB: usually _don't_ want to split things up and work one
+## group at a time
 #looking at each treatment independently - chronic noise first
 pdat_chr <- filter(pdat, treatment == "chronic noise")
 
@@ -122,6 +125,21 @@ pt <- ggplot(timedat,aes(day, mean, colour=treatment))+labs(y = "Parasite count"
 print(pt+geom_line())
 print(pt+geom_line() +geom_point())
 
+## BMB: what about those SDs you worked so hard for?
+print(pt+geom_line() +geom_point() +
+      geom_ribbon(aes(ymin=mean-2*sd,ymax=mean+2*sd,
+                      fill=treatment), colour=NA, alpha=0.2))
+## Hmm, maybe we would like to use SE rather than SD ... or use
+## a more count-based statistic of uncertainty ...
+
+print(pt+geom_point() +
+      geom_smooth(method="glm",
+                  aes(fill=treatment),
+                  method.args=list(family=quasipoisson),
+                  formula=y~poly(x,2),
+                  alpha=0.2)
+      )
+
 
 #taking the total parasite count over all days and comparing treatments 
 totdat <- select(guppy, fish.Id, treatment, parasite.count)
@@ -146,6 +164,11 @@ btot <- ggplot(totdatgrp2,aes(treatment, mean))+
 
 print(btot+geom_bar(stat = "identity", width = 0.5, fill="steelblue"))+
   theme_minimal()
+
+## BMB: I'm not thrilled with this one since it displays so much less
+## information, but OK
+
+## grade: 2.1/3
 
 
 
