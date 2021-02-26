@@ -150,13 +150,14 @@ totdatgrp <- (totdat
             %>% group_by(fish.Id, treatment)
             %>% summarise_at("parasite.count",
                              list(sum=sum), na.rm=TRUE))
+print(totdatgrp)
 
 #took the mean total parasite for each treatment
 totdatgrp2 <- (totdatgrp
                %>% group_by(treatment)
                %>% summarise_at("sum",
                                 list(mean=mean, sd=sd), na.rm=TRUE))
-
+print(totdatgrp2)
 
 #plotting the total parasite count over all sampling days across treatments (boxplot)
 btot <- ggplot(totdatgrp2,aes(treatment, mean))+
@@ -172,6 +173,56 @@ print(btot+geom_bar(stat = "identity", width = 0.5, fill="steelblue"))+
 
 
 
-##Permutations assignment
+##Assignment 5 (Permutations)
 
-#based on what I have plotted in the previous assignment
+library("ggplot2"); theme_set(theme_bw())
+library("lmPerm")
+library("coin")
+library("gtools")
+
+#bringing in condensed guppy data for all 3 treatments
+bguppy <- read.csv(file = "guppy3.csv", head= TRUE)
+summary(bguppy)
+
+#permutation test 1
+summary(lmp(tot.parasite.count~treatment, data=bguppy))
+
+#bringing in condensed guppy data of only noise stressors
+cguppy <- read.csv(file = "guppy2.csv", head= TRUE)
+summary(cguppy)
+
+cguppy$treatment <- factor(cguppy$treatment)
+print(cguppy)
+
+
+#visualizing mean total parasite count by treatment
+print(ggplot(cguppy,aes(treatment,tot.parasite.count))
+      + geom_boxplot(fill="lightgray")
+      + stat_sum(alpha=0.7)
+      + scale_size(breaks=1:2, range=c(3,6))
+      + labs(y="Mean total parasite count", x="Treatment")
+)
+
+
+
+
+#permutation test 2
+set.seed(101) 
+nsim <- 9999
+res <- numeric(nsim) 
+for (i in 1:nsim) {
+  perm <- sample(nrow(cguppy))
+  bdat <- transform(cguppy,tot.parasite.count=tot.parasite.count[perm])
+  res[i] <- mean(bdat$tot.parasite.count[bdat$treatment=="acute noise"])-
+    mean(bdat$tot.parasite.count[bdat$treatment=="chronic noise"])
+}
+
+obs <- mean(cguppy$tot.parasite.count[cguppy$treatment=="acute noise"])-
+  mean(cguppy$tot.parasite.count[cguppy$treatment=="chronic noise"])
+
+res <- c(res,obs)
+2*mean(res>=obs)
+
+hist(res,col="gray",las=1,main="")
+abline(v=obs,col="red")
+
