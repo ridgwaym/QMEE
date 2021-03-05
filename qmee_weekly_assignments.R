@@ -226,3 +226,40 @@ res <- c(res,obs)
 hist(res,col="gray",las=1,main="")
 abline(v=obs,col="red")
 
+
+##Assignment 6 (linear models)
+
+linguppy <- read.csv(file="guppylin1.csv", stringsAsFactors=TRUE)
+linguppy$treatment <- factor(linguppy$treatment,levels=c("No Noise","acute noise","chronic noise"))
+linguppy$treatment
+
+#diagnostic plot
+
+lmtpsl <- lm(tot_parasite~standard.length, data=linguppy)
+lmtpsl
+plot(lmtpsl, id.n=4)
+
+
+lmint <- lm(tot_parasite~standard.length*treatment, data=linguppy)
+summary(lmint) 
+lmboth <- lm(tot_parasite~standard.length + treatment, data=linguppy)
+summary(lmboth)
+lmparasite <- lm(tot_parasite~standard.length, data=linguppy)
+summary(lmparasite)
+lmtreatment <- lm(tot_parasite~treatment, data=linguppy)
+summary(lmtreatment)
+
+anova(lmboth, lmparasite, test="F")
+drop1(lmboth, test="F")
+car::Anova(lmboth)
+
+
+#inferential plot
+install.packages("emmeans")
+
+library(emmeans)
+e1 <- emmeans(lmboth, "treatment")
+pairs(e1)
+plot(e1)
+
+
