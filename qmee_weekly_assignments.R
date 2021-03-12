@@ -263,3 +263,7 @@ pairs(e1)
 plot(e1)
 
 
+
+
+#Assignment 7 (generalized linear models)
+
