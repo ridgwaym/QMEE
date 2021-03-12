@@ -52,7 +52,7 @@ view(guppy)
 
 library(dplyr)
 
-#pairing down columns to only the ones I need
+#paring down columns to only the ones I need
 ## BMB: good!
 pdat <- select(guppy, treatment, day, parasite.count)
 
@@ -184,6 +184,7 @@ library("gtools")
 bguppy <- read.csv(file = "guppy3.csv", head= TRUE)
 summary(bguppy)
 
+ggplot(bguppy,aes(treatment,tot.parasite.count)) + geom_boxplot()
 #permutation test 1
 summary(lmp(tot.parasite.count~treatment, data=bguppy))
 
@@ -192,6 +193,7 @@ cguppy <- read.csv(file = "guppy2.csv", head= TRUE)
 summary(cguppy)
 
 cguppy$treatment <- factor(cguppy$treatment)
+## BMB: do we need to see the whole thing? summary(), skimr::skim() ?
 print(cguppy)
 
 
@@ -202,9 +204,6 @@ print(ggplot(cguppy,aes(treatment,tot.parasite.count))
       + scale_size(breaks=1:2, range=c(3,6))
       + labs(y="Mean total parasite count", x="Treatment")
 )
-
-
-
 
 #permutation test 2
 set.seed(101) 
@@ -226,6 +225,7 @@ res <- c(res,obs)
 hist(res,col="gray",las=1,main="")
 abline(v=obs,col="red")
 
+## grade: 2
 
 ##Assignment 6 (linear models)
 
