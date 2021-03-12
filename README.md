@@ -27,3 +27,18 @@ Second, since the control did not appear different from the chronic noise group,
 **BMB:**  "exposure to a noise stressor will impact the immunity of guppies" - we already know it will (the null hypothesis is always false/nothing is zero) ...
 
 
+Assignment 7: Generalized linear models
+
+For this week's assignment, I decided to test an additional hypothesis concerning the control group. I hypothesized that in the absence of a noise stressor, fish immune function would not be weakened and therefore at any given time, I predicted that there would be a constantly low parasite load present in the fish population sampled. 
+
+I first performed a diagnostic plot which demonstrated the following: 
+
+Residuals vs Fitted - equally spread values across a horizontal line suggests I don't have a non-linear relationship
+
+QQ Plot - my values did not correlate tightly in a straight line, but instead deviates severely at the highest and lowest theoretical quantiles, indicating that my data is not normally distributed. 
+
+Scale-Location - my data is slightly skewed, as it isn't distributed evenly across a horizontal line, indicating that the assumption of equal variance is not satisfied
+
+Residuals vs leverage - no significant outliers in the data
+
+Then, I made an inferential plot for the model using the effects package. 
