@@ -255,7 +255,9 @@ car::Anova(lmboth)
 
 
 #inferential plot
-install.packages("emmeans")
+## install.packages("emmeans")
+## BMB: do NOT (please) put install.packages() in your code
+## (if necessary, comment it out)
 
 library(emmeans)
 e1 <- emmeans(lmboth, "treatment")
@@ -280,7 +282,6 @@ library(effects)
 allEffects(g1)
 plot(predictorEffects(g1))
 
-
-
+## BMB: Looks OK, but not reproducible.
 
 
