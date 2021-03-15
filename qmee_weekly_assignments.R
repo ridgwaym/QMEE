@@ -272,9 +272,39 @@ plot(e1)
 #diagnostic plot
 genlinguppy <- read.csv(file="gen_lin_guppy.csv", stringsAsFactors=TRUE)
 
+## BMB: let's take a look
+print(ggplot(genlinguppy, aes(day,parasite.count))
+    + geom_violin(aes(group=day),scale="width",fill="red",alpha=0.3)
+    + geom_point()
+    + geom_smooth(method="glm", method.args=list(family=quasipoisson))
+    + geom_smooth(colour="cyan")
+    + geom_smooth(method="glm", method.args=list(family=quasipoisson),
+                formula=y~poly(x,2), colour="purple")
+    )
+## the cyan curve is a nonparametric (loess) fit.
+
 g1 <- glm(parasite.count~day,genlinguppy,family=quasipoisson(link="log"))
 summary(g1)
 plot(g1)
+## the residuals have a broad range, which makes the curve/nonlinearity
+## in the residuals vs fitted plot look less important than it really
+## is.  The 'badness' of the Q-Q and scale-location plots are driven
+## mostly by this nonlinearity
+
+g2 <- update(g1, . ~ poly(day,2))
+plot(g2)
+## hmm, still bad heteroscedasticity ...
+
+g3 <- MASS::glm.nb(parasite.count~poly(day,2), data=genlinguppy)
+plot(g3) ## BMB: much better (although still skewed ...)
+
+library(DHARMa)
+plot(simulateResiduals(g3))
+
+## looking for other information that would help us out
+pairs(genlinguppy[,-1],gap=0)
+car::scatterplotMatrix(genlinguppy[,-1])
+GGally::ggpairs(genlinguppy,columns=2:4)
 
 #inferential plot using emmeans
 
@@ -283,6 +313,8 @@ library(effects)
 allEffects(g1)
 plot(predictorEffects(g1))
 
-## BMB: Looks OK, but not reproducible.
+## BMB: Looks OK.
+## grade: 2
+
 
 
