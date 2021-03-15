@@ -270,13 +270,14 @@ plot(e1)
 #Assignment 7 (generalized linear models)
 
 #diagnostic plot
+genlinguppy <- read.csv(file="gen_lin_guppy.csv", stringsAsFactors=TRUE)
+
 g1 <- glm(parasite.count~day,genlinguppy,family=quasipoisson(link="log"))
 summary(g1)
 plot(g1)
 
 #inferential plot using emmeans
 
-install.packages("effects")
 library(effects)
 
 allEffects(g1)
