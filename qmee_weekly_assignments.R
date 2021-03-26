@@ -286,3 +286,83 @@ plot(predictorEffects(g1))
 ## BMB: Looks OK, but not reproducible.
 
 
+
+
+
+##Assignment 8
+
+library("lattice") 
+library("R2jags")
+library("rstanarm")
+library("arm")        
+library("coda")
+library("emdbook")    
+library("dotwhisker")
+library("broom.mixed")
+library("ggplot2"); theme_set(theme_bw())
+library("R2WinBUGS")
+library("rjags")
+namedList <- lme4:::namedList  
+library(dplyr)
+library(readr)
+library(R2jags)
+library(coda)
+library(broom.mixed)
+
+
+guppybayes <- (read_csv("guppylin1.csv")
+            %>% mutate(treatment=factor(treatment,levels=c("chronic noise","No Noise","acute noise")))
+            %>% mutate_if(is.character,factor)
+)
+
+guppydat1 <- with(guppybayes,
+                namedList(N=nrow(guppybayes),            
+                           ntreatment=length(levels(treatment)), 
+                           treatment=as.numeric(treatment),     
+                           tot_parasite))
+
+treatmentmodel1 <- function() {
+  for (i in 1:N) {
+    logmean[i] <- b_treatment[treatment[i]]   
+    pred[i] <- exp(logmean[i])      
+    tot_parasite[i] ~ dpois(pred[i])
+  }
+  for (i in 1:ntreatment) {
+    b_treatment[i] ~ dnorm(0,0.001)
+  }
+}
+
+j1 <- jags(data=guppydat1,
+           inits=NULL,
+           parameters=c("b_treatment"),
+           model.file=treatmentmodel1)
+plot(j1)
+
+broom.mixed::tidy(j1,conf.int=TRUE, conf.method="quantile")
+
+
+#comparison to analogous frequentist fit
+
+linguppy <- read.csv(file="guppylin1.csv", stringsAsFactors=TRUE)
+linguppy$treatment <- factor(linguppy$treatment,levels=c("No Noise","acute noise","chronic noise"))
+
+lmtreatment <- lm(tot_parasite~treatment, data=linguppy)
+summary(lmtreatment)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
