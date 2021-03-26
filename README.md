@@ -26,6 +26,16 @@ Second, since the control did not appear different from the chronic noise group,
 
 **BMB:**  "exposure to a noise stressor will impact the immunity of guppies" - we already know it will (the null hypothesis is always false/nothing is zero) ...
 
+Assignment 6: Linear models
+
+For assignment 6, I looked at the relationship between standard length of the fish and the total number of parasites found on each fish. I hypothesized that as standard length increased, the number of parasites would as well since there is a higher surface area for infestation. I also expected that exposure to an acute noise stressor would increase the number of parasites found on the fish. 
+
+I first performed a diagnostic plot which tested the linearity of the relationship, normality of the distribution, equality of variance and pointed out any outliers in the data. 
+
+Then, I used a simple model to test the interaction between standard length and total number of parasites with the treatment the fish were exposed to, how treatment and standard length together impacted parasite number, and how treatment impacted standard length and parasite number individually in these fish. 
+
+Finally, I completed an inferential plot using the emmeans package.
+
 
 Assignment 7: Generalized linear models
 
@@ -42,6 +52,7 @@ Scale-Location - my data is slightly skewed, as it isn't distributed evenly acro
 Residuals vs leverage - no significant outliers in the data
 
 Then, I made an inferential plot for the model using the effects package. 
+<<<<<<< HEAD
 
 
 Assignment 8: Bayesian statistics
@@ -50,3 +61,5 @@ For this week's assignment, I used jags to fit a Bayesian model to my data. I lo
 
 
 
+=======
+>>>>>>> 7449ab6b6d7edbdffa90ce842512fb02ab143eec
