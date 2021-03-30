@@ -264,7 +264,8 @@ e1 <- emmeans(lmboth, "treatment")
 pairs(e1)
 plot(e1)
 
-
+## JD: Very little discussion, even after a lot of back-and-forth
+## Grade: 1.8/3
 
 
 #Assignment 7 (generalized linear models)
