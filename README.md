@@ -52,14 +52,13 @@ Scale-Location - my data is slightly skewed, as it isn't distributed evenly acro
 Residuals vs leverage - no significant outliers in the data
 
 Then, I made an inferential plot for the model using the effects package. 
-<<<<<<< HEAD
-
 
 Assignment 8: Bayesian statistics
 
 For this week's assignment, I used jags to fit a Bayesian model to my data. I looked at the relationship between noise stressor treatments on total parasites present in guppies. I used a poisson model and set the priors to what I thought was wide enough and the error variance to something that is always positive. After using the jags function, I also used broom.mixed to extract the Bayesian credible intervals. Finally, I compared this model to an analogous frequentist model that I completed in assignment 6. Unlike in the freqentist model, the Bayesian model required priors to be defined, which introduces probability to a hypothesis, whereas the frequentist model tests the hypothesis without considering probability. The frequentist approach is what I am familar with, and it is very straight-forward, but the Bayesian approach has the potential to be more informative. 
 
+## JD: OK as far as it goes. Did you see any differences or similarities between the two fits? If you accept your Bayesian assumptions, what do you learn?
+
+Grade 1.9/3
 
 
-=======
->>>>>>> 7449ab6b6d7edbdffa90ce842512fb02ab143eec
